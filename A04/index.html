@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nintendo Switch Activity</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f2eaea;
+    }
+    h2, h4 {
+      font-family: 'Noto Sans', sans-serif;
+      color: white;
+    }
+    .back-btn {
+      background-color: transparent;
+      color: #333;
+      border: 2px solid #333; 
+      border-radius: 50%;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      position: absolute;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background-color: purple; 
+      color: white; 
+      border-color: purple; 
+    }
+    .header-image {
+         position: relative;
+        width: 100%;
+        height: 400px; 
+        overflow: hidden;
+    }
+
+    .header-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* adjust the 0.5 to make it lighter/darker */
+        z-index: 1;
+    }       
+    .header-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: left;
+        padding: 20px;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0); 
+        border-radius: 10px;
+    }
+    .header-image h2 {
+      position: relative;
+      z-index: 1;
+    }
+    .main-layout {
+      display: flex;
+      flex-direction: row;
+      min-height: 1600px;
+      position: relative;
+      z-index: 1;
+    }
+    .left-panel, .right-panel {
+      flex: 1;
+    }
+    .left-panel {
+      background-color: #74CFEC;
+    }
+    .right-panel {
+      background-color: #EB7C6B;
+    }
+    .main-section {
+      position: absolute;
+      top: 300px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #262626;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      width: 90%;
+      z-index: 10;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-family: 'Noto Sans', sans-serif;
+    }
+    .spec-card {
+      background-color: #3E3D3D;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .spec-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .spec-label {
+      width: 200px;
+      font-weight: bold;
+      color: white;
+    }
+    .spec-row div:last-child {
+      color: white;
+    }
+    .feature-block {
+      background-color: #3E3D3D;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: white;
+    }
+    .feature-block h5 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid px-0">
+    <a  href="../index.html" class="back-btn">back</a>
+
+    <div class="header-image">
+      <img src="../img/switch pic2.jpg" alt="Nintendo switch" style="width: 100%; height: auto;" />
+      <div class="image-overlay"></div>
+      <div class="header-text">
+      <h2 class="display-4 fw-bold">Nintendo Switch: The Console That Could Do It All</h2>
+      </div>
+    </div>
+
+    <div class="main-layout">
+      <div class="left-panel"></div>
+      <div class="right-panel"></div>
+    </div>
+
+    <div class="main-section">
+      <div class="spec-card">
+        <div class="section-title" style="color: white;"> Specifications</div>
+        <div class="spec-row"><div class="spec-label">🔹 Release Date</div><div class="text-white">March 3, 2017</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Display</div><div class="text-white">6.2-inch LCD, 1280x720</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Processor</div><div class="text-white">Custom NVIDIA Tegra</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Storage</div><div class="text-white">32GB (expandable up to 2TB)</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Battery Life</div><div class="text-white">2.5–6.5 hrs (up to 9 hrs in 2019 model)</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Charging Port</div><div class="text-white">USB-C</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Audio</div><div class="text-white">Stereo + Headphone Jack</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Wireless</div><div class="text-white">Wi-Fi, Bluetooth 4.1, NFC</div></div>
+        <div class="spec-row"><div class="spec-label">🔹 Weight</div><div class="text-white">~0.88 lbs with Joy-Cons</div></div>
+      </div>
+
+      <div class="section-title" style="color: white;"> Top Features</div>
+
+      <div class="feature-block">
+        <h5>🔄 Hybrid Design</h5>
+        <p class="text-white">Play your way: dock it for TV gaming, pop it out for handheld, or prop it up for tabletop mode. Total flexibility!</p>
+      </div>
+      <div class="feature-block">
+        <h5>🎮 Detachable Joy-Cons</h5>
+        <p class="text-white">Snap on/snap off magic! Each Joy-Con has motion control, HD Rumble, and even an IR sensor. Great for solo or shared play.</p>
+      </div>
+      <div class="feature-block">
+        <h5>👥 Multiplayer Ready</h5>
+        <p class="text-white">Link up to 8 consoles locally, or jump online with friends via Nintendo Switch Online!</p>
+      </div>
+      <div class="feature-block">
+        <h5>🧠 Touchscreen + Smart UI</h5>
+        <p class="text-white">Swipe and tap with a responsive 6.2" touchscreen that adds ease to gameplay and menus.</p>
+      </div>
+      <div class="feature-block">
+        <h5>🎮 Legendary Game Library</h5>
+        <p class="text-white">From Breath of the Wild to Mario Odyssey, Animal Crossing and Smash Bros.—the hits keep coming.</p>
+      </div>
+      <div class="feature-block">
+        <h5>📦 Expandable Storage</h5>
+        <p class="text-white">32GB built-in, but you can pop in a microSD card up to 2TB. Space for every adventure.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; © 2025 Nintendo Fan Page. Powered with ❤️</p>
+  </footer>
+</body>
+</html>
