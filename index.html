@@ -36,17 +36,29 @@
             font-size: 1.5rem;
             margin: 10px auto 0;
             width: fit-content;
+            text-align: center;
         }
-        .salutation {
+        .intro-panel {
             background-color: #bdeb8a;
-            padding: 3vw;
-            text-align: left;
-            font-size: 2vw;
-            font-weight: bold;
-            border-radius: 50px;
-            margin: 1vw auto;
+            padding: 2rem;
+            align-items: center;           
+            border-radius: 30px;
+            margin: 2rem auto;
             font-family: 'Baskerville', serif;
             max-width: 85%;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .intro-text {
+             font-size: 1rem;
+             font-weight: bold;
+        }
+        .intro-image {
+            width: 250px;
+            border-radius: 20px;
+            height: auto;
         }
         .navbar-brand {
             font-family: 'Caprasimo', cursive;
@@ -58,6 +70,22 @@
         .header h1, .name-tag {
             max-width: 100%;
             flex-wrap: wrap;
+        }
+        .card {
+            background-color: #9448ec;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card: hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        .projects-title {
+            font-family: 'Baskerville', serif;
+            color: #333;
         }
     </style>
 </head>
@@ -84,9 +112,37 @@
     </div>
     
     <div class="container-fluid">
-        <div class="salutation">SALUTATIONS!</div>
+        <div class="intro-panel">
+            <img src+"img/my pic.jpg" alt="AJ Image" class="intro-image">
+            <div class="intro-text">
+                <p>Salutations!</p>
+                <p>Name: Aaron James Landicho</p>
+                <p>Program: DIT</p>
+                <p>Year and Section: 2 - 1</p>
+            </div>    
+       </div>
     </div>
-    
+    <div class="container-fluid my-5">
+        <div class="row my-3">
+            <div class="col">
+                <div class="display-5 projects-title">
+                    Projects
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Activity 4</h5>
+                        <h6 class="card-subtitle mb-2">Ito ay Activity 4</h6>
+                        <p class="card-text"></p>
+                        <a href="A04/index.html" class="card-link text-white">Card link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
