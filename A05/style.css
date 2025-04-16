@@ -1,0 +1,98 @@
+body {
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+    line-height: 1.6;
+    background-color: #FEFAEA;
+}
+
+h1,
+h2 {
+    font-weight: 700;
+    font-family: 'Mononoki';
+}
+
+p {
+    color: #555;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section */
+.hero-title {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Section Titles */
+section h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Section Backgrounds */
+section.bg-light {
+    background-color: #f9f9f9 !important;
+}
+
+/* Gallery Hover Effects */
+.gallery img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Lightbox Modal Styling */
+.modal-content {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #eee;
+    font-size: 0.95rem;
+}
+
+/* Rounded image corners */
+img.rounded {
+    border-radius: 0.75rem !important;
+}
+
+/* Section padding */
+section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Divider spacing */
+hr {
+    border-top: 2px solid #ccc;
+    width: 80%;
+    margin: auto;
+}
+.custom-btn {
+    border: 2px solid rgb(49, 48, 48);
+    background-color: transparent;
+    color: rgb(49, 48, 48);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #9add4c;
+    color: white;
+    border-color: #9add4c;
+}

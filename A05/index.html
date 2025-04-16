@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aoshima (Cat Island)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a href="../index.html" class="custom-btn" >← Back</a>
+        </div>
+    </nav>
+
+    <!-- Welcome Banner -->
+    <section class="bg-primary text-white py-4 text-center">
+        <h2>Welcome to Aoshima</h2>
+        <p>The famous Cat Island of Ōzu, Japan 🇯🇵🐾</p>
+    </section>
+
+    <!-- Hero Section (Header Image) -->
+    <section class="position-relative text-center mb-5">
+        <img src="../img/Aoshima Island1.jpg" class="img-fluid w-100"
+            style="height: 80vh; object-fit: cover;" alt="Aoshima Island">
+        <div class="position-absolute top-50 start-50 translate-middle text-white">
+            <h1 class="bg-dark bg-opacity-50 px-4 py-2 rounded">Discover Aoshima Island</h1>
+        </div>
+        <div style="text-align: left;">
+            <p>Tucked away in the tranquil Seto Inland Sea, Aoshima is a tiny island in Ehime Prefecture best known for its furry four-legged residents. Often called Cat Island, this quiet fishing village is home to a cat population that famously outnumbers its human residents.</p>
+            <p>With no hotels, shops, or cars, Aoshima offers a peaceful escape from the rush of modern life. Visitors come not for the usual tourist attractions, but for the charm of its roaming cats, scenic views, and slow, simple pace.</p>
+            <p>Whether you're an animal lover, a photographer, or just curious about one of Japan’s quirkiest destinations, Aoshima is a one-of-a-kind spot where nature and feline companionship reign supreme.</p>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container mb-5">
+        <hr class="my-4" />
+    </div>
+
+    <!-- Section Transition -->
+    <section class="bg-light py-5 text-center">
+        <h2 class="mb-4">Explore the Island</h2>
+    </section>
+
+    <!-- Top Attractions -->
+    <section class="py-5 text-center">
+        <h2>Top Attractions</h2>
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <img src="../img/cats of aoshima1.jpg"
+                        class="img-fluid rounded" alt="Cats of Aoshima">
+                    <p class="mt-2">Famous Cat Colony</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="../img/aoshima shrine.jpg"
+                        class="img-fluid rounded" alt="Aoshima Shrine">
+                    <p class="mt-2">Aoshima Shrine</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="../img/aoshima harbor.jpg"
+                        class="img-fluid rounded" alt="Aoshima Harbor">
+                    <p class="mt-2">Quiet Fishing Harbor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Map Section -->
+    <section class="py-5 bg-light text-center">
+        <h2>Where is Aoshima?</h2>
+        <div class="container mt-4">
+            <img src="../img/aoshima map.png"
+                class="img-fluid rounded" alt="Map of Aoshima Island">
+        </div>
+    </section>
+
+    <!-- Local Life -->
+    <section class="py-5 text-center">
+        <h2>Local Life & Experience</h2>
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <img src="../img/cats on the dock.jpg"
+                        class="img-fluid rounded" alt="Cats on the dock">
+                    <p class="mt-2">Cats peacefully roaming the docks</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="../img/social cats.jpg"
+                        class="img-fluid rounded" alt="Cats socializing">
+                    <p class="mt-2">A community where cats outnumber humans</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container text-center my-5">
+        <h2>Cat Island Stats</h2>
+        <p>Curious how Aoshima stacks up?</p>
+        <h5>Cat-to-Human Ratio</h5>
+        <div class="progress mb-3" style="height: 25px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 90%;">90% Cats</div>
+        </div>
+
+        <h5>Peace & Quiet</h5>
+        <div class="progress mb-3" style="height: 25px;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 95%;">95% Tranquility</div>
+        </div>
+
+        <h5>Store Availability</h5>
+        <div class="progress" style="height: 25px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 5%;">5% Stores</div>
+        </div>
+    </section>
+
+    <!-- 🐾 Cat Photo Gallery with Lightbox -->
+    <section class="py-5 bg-light text-center">
+        <h2>Gallery: The Cats of Aoshima</h2>
+        <div class="container mt-4">
+            <div class="row g-3">
+                <div class="col-sm-6 col-md-4">
+                    <img src="../img/cats of aoshima.jpg"
+                        class="img-fluid rounded" alt="Aoshima Cat 1" data-bs-toggle="modal"
+                        data-bs-target="#img1Modal">
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <img src="../img/cats of aoshima2.jpg"
+                        class="img-fluid rounded" alt="Aoshima Cat 2" data-bs-toggle="modal"
+                        data-bs-target="#img2Modal">
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <img src="../img/cats of aoshima3.jpg"
+                        class="img-fluid rounded" alt="Aoshima Cat 3" data-bs-toggle="modal"
+                        data-bs-target="#img3Modal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modals -->
+    <div class="modal fade" id="img1Modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <img src="../img/cats of aoshima.jpg"
+                    class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="img2Modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <img src="../img/cats of aoshima2.jpg"
+                    class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="img3Modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <img src="../img/cats of aoshima3.jpg"
+                    class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <p>&copy; Aoshima Travel Guide | Respect the locals and the cats</p>
+    </footer>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
