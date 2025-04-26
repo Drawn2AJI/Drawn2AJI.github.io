@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
         body {
             background-color: #daf7ba;
         }
+
         .header {
             background-color: #8547ce;
             color: white;
@@ -17,15 +19,18 @@
             padding: 20px 0;
             position: relative;
         }
+
         .header h1 {
             font-weight: bold;
             font-size: 4rem;
             font-family: 'Caprasimo', cursive;
             display: block;
         }
+
         .highlight {
             color: #abfa4f;
         }
+
         .name-tag {
             background-color: #9add4c;
             padding: 10px 20px;
@@ -38,10 +43,11 @@
             width: fit-content;
             text-align: center;
         }
+
         .intro-panel {
             background-color: #bdeb8a;
             padding: 2rem;
-            align-items: center;           
+            align-items: center;
             border-radius: 30px;
             margin: 2rem auto;
             font-family: 'Baskerville', serif;
@@ -51,26 +57,33 @@
             flex-wrap: wrap;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
         .intro-text {
-             font-size: 1rem;
-             font-weight: bold;
+            font-size: 1rem;
+            font-weight: bold;
         }
+
         .intro-image {
             width: 250px;
             border-radius: 20px;
             height: auto;
         }
+
         .navbar-brand {
             font-family: 'Caprasimo', cursive;
             font-size: 2vw;
         }
+
         .nav-link {
             font-size: 1.5vw;
         }
-        .header h1, .name-tag {
+
+        .header h1,
+        .name-tag {
             max-width: 100%;
             flex-wrap: wrap;
         }
+
         .card {
             background-color: #9448ec;
             color: white;
@@ -79,26 +92,32 @@
             border-radius: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card: hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
+
         .card-title {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
         }
-         .card-subtitle {
+
+        .card-subtitle {
             font-family: 'Poppins', sans-serif;
             font-weight: 400;
         }
+
         .card-header{
             background-color: #691dbe;
         }
+
         .projects-title {
             font-family: 'Baskerville', serif;
             font-weight: bold;
             color: #333;
         }
+
         .custom-btn {
             border: 2px solid white;
             background-color: transparent;
@@ -108,6 +127,7 @@
             border-radius: 8px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         .custom-btn:hover {
             background-color: #9add4c;
             color: white;
@@ -115,6 +135,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #9448ec;">
         <div class="container-fluid">
@@ -131,12 +152,12 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="header">
         <h1>The First <span class="highlight">CANVAS</span></h1>
         <div class="name-tag">AJ LANDICHO</div>
     </div>
-    
+
     <div class="container-fluid">
         <div class="intro-panel">
             <img src="img/my pic.jpg" alt="AJ Image" class="intro-image">
@@ -145,8 +166,8 @@
                 <p>Name: Aaron James Landicho</p>
                 <p>Program: DIT</p>
                 <p>Year and Section: 2 - 1</p>
-            </div>    
-       </div>
+            </div>
+        </div>
     </div>
     <div class="container-fluid my-5">
         <div class="row my-3">
@@ -164,7 +185,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">THE SWITCH</h5>
-                        <p class="card-text"> This project is to showcase a device.</p>
+                        <p class="card-text">this project is to showcase a device.</p>
                         <a href="A04/index.html" class="custom-btn">Teleport</a>
                     </div>
                 </div>
@@ -176,12 +197,26 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">THE CAT ISLAND!!</h5>
-                        <p class="card-text"> This project is to showcase a specific place of our choosing.</p>
+                        <p class="card-text">this project is to showcase a specific place of our choosing.</p>
                         <a href="A05/index.html" class="custom-btn">Teleport</a>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        ACTIVITY 6
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">MANGA LIBRARY!</h5>
+                        <p class="card-text">this project is to exhibit my manga favorites and while incorporating javascript loops.</p>
+                        <a href="A06/index.html" class="custom-btn">Teleport</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
