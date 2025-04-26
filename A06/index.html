@@ -1,2 +1,182 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Grove</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <button onclick="window.location.href='../index.html'" class="btn btn-outline-light">Back</button>
+        <button class="btn btn-outline-light ml-2" id="themeToggle">🌙</button>
+        <span class="navbar-text mx-auto text-white h4">Manga Grove</span>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row" id="mangaGallery"></div>
+    </div>
+
+    <script>
+        const mangas = [
+            {
+                title: "Atelier of Witch Hat",
+                img: "../img/witch hat cover.jpg",
+                description: "the story of a girl named Coco. In her world, only those born with magical abilities can become witches. However, after meeting a witch named Qifrey, Coco's dream begins to come true. The series explores magic, art, and the journey to becoming a true witch.",
+                author: "Kamome Shirahama",
+                link: "https://mangadex.org/title/67e7453b-9ee5-4ae5-9316-215b03e4a71d/witch-hat-atelier"
+            },
+            {
+                title: "One Piece",
+                img: "../img/one piece cover.jpg",
+                description: "the adventures of Monkey D. Luffy and his crew, the Straw Hat Pirates, as they explore the Grand Line in search of the mythical treasure known as the One Piece, Luffy's ultimate goal is to become the next King of the Pirates.",
+                author: "Eiichiro Oda",
+                link: "https://mangadex.org/title/a1c7c817-4e59-43b7-9365-09675a149a6f/one-piece"
+            },
+            {
+                title: "The One Within the Villainess",
+                img: "../img/villainess cover.jpg",
+                description: "In order to clear the name of 'Emi,' a girl who had reincarnated as Remilia, the villainess of an otome game, the real Remilia who had been watching all along inside awakens.Now it's time for the true villainess' revenge to begin!",
+                author: " Makiburo , Shiraume Nazuna",
+                link: "https://mangadex.org/title/6df29d13-2dab-4ca6-a0b5-74070abf3e1d/akuyaku-reijou-no-naka-no-hito-danzai-sareta-tenseisha-no-tame-usotsuki-heroine-ni-fukushuu"
+            },
+            {
+                title: "Dolly Kill Kill",
+                img: "../img/dolly cover.jpg",
+                description: "Humanity’s peace shatters with the invasion of monstrous wasps and giant weapon-wielding dolls called Dolly. Amid the chaos, high schooler Iruma Ikaruga fights to protect his friends, but only despair awaits. What do the dolls want—and can Iruma survive the horrors of this puppet show?",
+                author: "Yukiaki Kurando",
+                link: "https://mangadex.org/title/62e3c3ef-7810-473a-97d3-47b397f7c7d7/dolly-kill-kill"
+            },
+            {
+                title: "Apocalypse Bringer Mynoghra",
+                img: "../img/isekai apoc cover.jpg",
+                description: "I reincarnated as an evil god,Ira Takuto succumbed to illness at a young age and ended up reincarnating in a world that resembled the strategy simulation game, ?Eternal Nations?, of which he loved playing when alive What appeared in front of him was Atou, a girl belonging to the evil civilization that he used to play as, ?Mynoghra? The two of them decided to create a new country in this world once again.",
+                author: "Kazuno Fehu",
+                link: "https://mangadex.org/title/6e156d65-cf65-4d5b-9d04-52f2f8100fbf/apocalypse-bringer-mynoghra-world-conquest-starts-with-the-civilization-of-ruin"
+            },
+            {
+                title: "VERSUS",
+                img: "../img/versus cover.jpg",
+                description: "Humanity has been oppressed for hundreds of years due to the rise and invasion of the natural enemy demons, The world was ruled by the Great Demon Lord   and his 47 Demon Lords, While people live in fear, 47 people selected from all over the world have been named Heroes, They are preparing to fight against the Demon King's army. And now, a desperate operation with the survival of mankind on the line was about to begin.",
+                author: "One",
+                link: "https://mangadex.org/title/09bbbb75-1086-4e7c-b775-ae9ee1816e0d/versus"
+            }
+        ];
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function toggleDescription(index) {
+            const desc = document.getElementById(`desc-${index}`);
+            const toggleLink = document.getElementById(`toggle-${index}`);
+            if (desc && toggleLink) {
+                const isVisible = desc.classList.contains('show');
+                desc.classList.toggle('show', !isVisible);
+                toggleLink.textContent = isVisible ? 'Show more' : 'Show less';
+            }
+        }
+
+        function hoverEffect(index) {
+            const card = document.querySelectorAll('.manga-card')[index];
+            card.style.boxShadow = '0 0 15px rgba(255,165,0,0.7)';
+            setTimeout(() => {
+                card.style.boxShadow = '';
+            }, 500);
+        }
+
+        function createMangaCard(manga, index) {
+            const col = document.createElement('div');
+            col.className = 'col-md-4 mb-4';
+
+            const card = document.createElement('div');
+            card.className = 'card manga-card';
+            card.addEventListener('mouseover', () => hoverEffect(index));
+            card.addEventListener('click', () => card.classList.toggle('clicked'));
+
+            const img = document.createElement('img');
+            img.src = manga.img;
+            img.className = 'card-img-top';
+            img.alt = manga.title;
+
+            const cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+
+            const cardTitle = document.createElement('h5');
+            cardTitle.className = 'card-title';
+            cardTitle.textContent = manga.title;
+
+            const cardAuthor = document.createElement('p');
+            cardAuthor.className = 'card-author';
+            cardAuthor.textContent = `by ${manga.author}`;
+
+            const descWrapper = document.createElement('div');
+            descWrapper.className = 'description';
+            descWrapper.id = `desc-${index}`;
+
+            const cardText = document.createElement('p');
+            cardText.className = 'card-text';
+            cardText.textContent = manga.description;
+
+            const readLink = document.createElement('a');
+            readLink.href = manga.link;
+            readLink.target = '_blank';
+            readLink.className = 'btn btn-sm btn-light mt-2';
+            readLink.textContent = '📖 Read Now';
+
+            descWrapper.appendChild(cardText);
+            descWrapper.appendChild(readLink);
+
+            const toggleLink = document.createElement('span');
+            toggleLink.className = 'toggle-link';
+            toggleLink.id = `toggle-${index}`;
+            toggleLink.textContent = 'Show more';
+            toggleLink.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleDescription(index);
+            });
+
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardAuthor);
+            cardBody.appendChild(descWrapper);
+            cardBody.appendChild(toggleLink);
+
+            card.appendChild(img);
+            card.appendChild(cardBody);
+            col.appendChild(card);
+
+            return col;
+        }
+
+        const gallery = document.getElementById('mangaGallery');
+        mangas.forEach((manga, index) => {
+            const mangaCard = createMangaCard(manga, index);
+            gallery.appendChild(mangaCard);
+        });
+        
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.textContent = '🌞';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            themeToggle.textContent = isLight ? '🌞' : '🌙';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+
+    </script>
+
+</body>
+
 </html>
