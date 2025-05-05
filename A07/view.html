@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Color | Palette Poise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+        <div class="container-fluid d-flex align-items-center">
+            <a href="index.html" class="custom-btn">Back</a>
+            <span class="navbar-brand mx-auto">Palette Poise</span>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card-transparent text-center">
+            <div id="colorBox" class="color-box w-100"></div>
+            <div id="colorWord" class="color-word">Loading...</div>
+            <div id="colorCode" class="color-code">Please wait</div>
+        </div>
+    </div>
+
+    <script>
+        const colorBox = document.getElementById("colorBox");
+        const colorCode = document.getElementById("colorCode");
+        const colorWord = document.getElementById("colorWord");
+
+        function getColorName(hex) {
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+
+            if (r > 200 && g > 200 && b > 200) return "Bright Cloud";
+            if (r > 200 && g < 100 && b < 100) return "Rose Flame";
+            if (r < 100 && g > 200 && b < 100) return "Lime Dream";
+            if (r < 100 && g < 100 && b > 200) return "Blue Velvet";
+            if (r > 150 && g > 100 && b < 100) return "Golden Peach";
+            if (r < 80 && g < 80 && b < 80) return "Shadow";
+            return "Abstract Hue";
+        }
+
+        function applyColor(hexCode) {
+            const hex = hexCode.replace("#", "").padStart(6, "0");
+            const fullHex = `#${hex}`;
+            colorBox.style.backgroundColor = fullHex;
+            document.body.style.backgroundColor = fullHex;
+            colorCode.textContent = fullHex;
+            colorWord.textContent = getColorName(hex);
+            colorWord.style.color = fullHex;
+        }
+
+        function getURLParameter(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        const hexFromURL = getURLParameter("color");
+        if (hexFromURL && /^#?[0-9a-fA-F]{6}$/.test(hexFromURL)) {
+            const cleaned = hexFromURL.startsWith("#") ? hexFromURL : `#${hexFromURL}`;
+            applyColor(cleaned);
+        } else {
+            colorCode.textContent = "Invalid or missing color parameter.";
+            colorWord.textContent = "Unknown";
+        }
+    </script>
+</body>
+
+</html>

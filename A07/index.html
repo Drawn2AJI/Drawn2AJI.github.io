@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Poise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+        <div class="container-fluid d-flex align-items-center">
+            <a href="../index.html" class="custom-btn">Back</a>
+            <span class="navbar-brand mx-auto">Palette Poise</span>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card-transparent">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="form-control mt-4"
+                    placeholder="Enter color name or hex code">
+                <button id="searchBtn" class="btn-sophisticated mt-2">Refine Search</button>
+            </div>
+            <div id="historyList" class="mb-3"></div>
+
+            <div id="colorBox" class="color-box w-100"></div>
+            <div id="colorWord" class="color-word">Let art meet color!</div>
+            <div id="colorCode" class="color-code">Click the button to generate a color!</div>
+
+            <button id="generateBtn" class="btn-sophisticated mt-3">Curate a Color</button>
+            <button id="viewBtn" class="btn btn-outline-dark mt-2">View This Color</button>
+        </div>
+    </div>
+
+    <script>
+        const generateBtn = document.getElementById("generateBtn");
+        const viewBtn = document.getElementById("viewBtn");
+        const colorBox = document.getElementById("colorBox");
+        const colorCode = document.getElementById("colorCode");
+        const colorWord = document.getElementById("colorWord");
+        const searchBtn = document.getElementById("searchBtn");
+        const searchInput = document.getElementById("searchInput");
+        const historyList = document.getElementById("historyList");
+
+        const searchHistory = [];
+
+        function getColorName(hex) {
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+
+            if (r > 200 && g > 200 && b > 200) return "Bright Cloud";
+            if (r > 200 && g < 100 && b < 100) return "Rose Flame";
+            if (r < 100 && g > 200 && b < 100) return "Lime Dream";
+            if (r < 100 && g < 100 && b > 200) return "Blue Velvet";
+            if (r > 150 && g > 100 && b < 100) return "Golden Peach";
+            if (r < 80 && g < 80 && b < 80) return "Shadow";
+            return "Abstract Hue";
+        }
+
+        function applyColor(hexCode) {
+            const hex = hexCode.replace("#", "");
+            const fullHex = `#${hex.padStart(6, '0')}`;
+            colorBox.style.backgroundColor = fullHex;
+            document.body.style.backgroundColor = fullHex;
+            colorCode.textContent = fullHex;
+            colorWord.textContent = getColorName(hex);
+            colorWord.style.color = fullHex;
+        }
+
+        function updateHistory(entry) {
+            if (!searchHistory.includes(entry)) {
+                searchHistory.unshift(entry);
+                if (searchHistory.length > 10) searchHistory.pop();
+                renderHistory();
+            }
+        }
+
+        function renderHistory() {
+            historyList.innerHTML = "<strong>Search History:</strong><ul class='ps-3'>";
+            searchHistory.forEach(item => {
+                historyList.innerHTML += `<li onclick="applyColor('${item}')">${item}</li>`;
+            });
+            historyList.innerHTML += "</ul>";
+        }
+
+        generateBtn.addEventListener("click", async () => {
+            try {
+                const response = await fetch("https://php-noise.com/noise.php?json&base64", { cache: "no-cache" });
+                const data = await response.json();
+
+                let hex = "";
+                if (Array.isArray(data.colors) && data.colors.length > 0 && data.colors[0].hex) {
+                    hex = data.colors[0].hex;
+                }
+
+                if (!hex || hex.length === 0) {
+                    hex = Math.floor(Math.random() * 16777215).toString(16);
+                }
+
+                applyColor(hex);
+                updateHistory(`#${hex}`);
+            } catch (error) {
+                colorCode.textContent = "Oops! Couldn't fetch color.";
+                colorWord.textContent = "Mystery Shade";
+                colorWord.style.color = "#555";
+                console.error("Error fetching color:", error);
+            }
+        });
+
+        searchBtn.addEventListener("click", () => {
+            let value = searchInput.value.trim();
+            if (!value) return;
+
+            if (/^#?[0-9a-fA-F]{6}$/.test(value)) {
+                const hex = value.startsWith("#") ? value : `#${value}`;
+                applyColor(hex);
+                updateHistory(hex);
+            } else {
+                const dummy = document.createElement("div");
+                dummy.style.color = value;
+                if (dummy.style.color) {
+                    const ctx = document.createElement("canvas").getContext("2d");
+                    ctx.fillStyle = value;
+                    const computed = ctx.fillStyle;
+                    applyColor(computed);
+                    updateHistory(computed);
+                } else {
+                    alert("Invalid color name or hex.");
+                }
+            }
+            searchInput.value = "";
+        });
+
+        viewBtn.addEventListener("click", () => {
+            const hex = colorCode.textContent.trim();
+            if (/^#[0-9a-fA-F]{6}$/.test(hex)) {
+                window.location.href = `view.html?color=${encodeURIComponent(hex)}`;
+            } else {
+                alert("No valid color to view.");
+            }
+        });
+
+        window.applyColor = applyColor;
+    </script>
+</body>
+
+</html>
