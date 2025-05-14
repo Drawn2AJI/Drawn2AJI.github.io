@@ -18,10 +18,23 @@
     </nav>
 
     <div class="container mt-5">
-        <div class="card-transparent text-center">
-            <div id="colorBox" class="color-box w-100"></div>
-            <div id="colorWord" class="color-word">Loading...</div>
-            <div id="colorCode" class="color-code">Please wait</div>
+        <div class="row">
+            <div class="col">
+                <div class="card-transparent text-center">
+                    <div id="colorBox" class="color-box w-100"></div>
+                    <div id="colorWord" class="color-word">Loading...</div>
+                    <div id="colorCode" class="color-code">Please wait</div>
+                    <button class="btn btn-outline-dark mt-2" onclick="copyHex()">Copy Hex</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mt-4">
+                    <h5>Color Harmony</h5>
+                    <div id="harmonyColors" class="d-flex gap-3 flex-wrap"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -43,6 +56,64 @@
             if (r < 80 && g < 80 && b < 80) return "Shadow";
             return "Abstract Hue";
         }
+        function copyHex() {
+            const hex = colorCode.textContent;
+            navigator.clipboard.writeText(hex).then(() => {
+                alert(`Copied ${hex} to clipboard!`);
+            }).catch(err => {
+                console.error("Failed to copy: ", err);
+            });
+        }
+
+        function getComplementary(hex) {
+            const r = 255 - parseInt(hex.slice(0, 2), 16);
+            const g = 255 - parseInt(hex.slice(2, 4), 16);
+            const b = 255 - parseInt(hex.slice(4, 6), 16);
+            return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+        }
+
+        function getAnalogous(hex) {
+            const num = parseInt(hex, 16);
+            const left = (num + 0x111111) % 0xFFFFFF;
+            const right = (num + 0xEEEEEE) % 0xFFFFFF;
+            return [
+                `#${left.toString(16).padStart(6, '0')}`,
+                `#${right.toString(16).padStart(6, '0')}`
+            ];
+        }
+
+        function showHarmony(hex) {
+            const harmonyColors = document.getElementById("harmonyColors");
+            harmonyColors.innerHTML = "";
+
+            const analogs = getAnalogous(hex);
+            const complement = getComplementary(hex);
+            const allColors = [...analogs, complement];
+
+            allColors.forEach(color => {
+                const card = document.createElement("div");
+                card.className = "card p-2 bg-white bg-opacity-25 border-0 rounded shadow";
+                card.style.width = "100px";
+                card.style.cursor = "pointer";
+                card.onclick = () => applyColor(color);
+
+                const swatch = document.createElement("div");
+                swatch.style.backgroundColor = color;
+                swatch.style.width = "100%";
+                swatch.style.height = "60px";
+                swatch.style.borderRadius = "8px";
+
+                const label = document.createElement("div");
+                label.textContent = color.toUpperCase();
+                label.className = "text-center mt-1 small";
+                label.style.color = color;
+
+                card.appendChild(swatch);
+                card.appendChild(label);
+                harmonyColors.appendChild(card);
+            });
+        }
+
 
         function applyColor(hexCode) {
             const hex = hexCode.replace("#", "").padStart(6, "0");
@@ -52,6 +123,8 @@
             colorCode.textContent = fullHex;
             colorWord.textContent = getColorName(hex);
             colorWord.style.color = fullHex;
+            document.title = `${getColorName(hex)} | Palette Poise`;
+            showHarmony(hex);
         }
 
         function getURLParameter(name) {
@@ -60,12 +133,15 @@
         }
 
         const hexFromURL = getURLParameter("color");
-        if (hexFromURL && /^#?[0-9a-fA-F]{6}$/.test(hexFromURL)) {
-            const cleaned = hexFromURL.startsWith("#") ? hexFromURL : `#${hexFromURL}`;
+        if (hexFromURL && /^#?[0-9a-fA-F]{6}$/.test(hexFromURL.trim())) {
+            const cleaned = hexFromURL.startsWith("#") ? hexFromURL.trim() : `#${hexFromURL.trim()}`;
             applyColor(cleaned);
         } else {
+            document.body.style.backgroundColor = "#f8f9fa";
+            colorBox.style.backgroundColor = "#ccc";
             colorCode.textContent = "Invalid or missing color parameter.";
             colorWord.textContent = "Unknown";
+            document.title = "Invalid Color | Palette Poise";
         }
     </script>
 </body>
