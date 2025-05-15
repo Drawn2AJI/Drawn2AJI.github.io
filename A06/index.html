@@ -165,16 +165,16 @@
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const newTheme = currentTheme == 'dark' ? 'light' : 'dark';
             body.setAttribute('data-bs-theme', newTheme);
-            themeToggle.textContent = newTheme === 'light' ? '🌞' : '🌙';
+            themeToggle.textContent = newTheme == 'light' ? '🌞' : '🌙';
             localStorage.setItem('theme', newTheme);
         });
 
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             body.setAttribute('data-bs-theme', savedTheme);
-            themeToggle.textContent = savedTheme === 'light' ? '🌞' : '🌙';
+            themeToggle.textContent = savedTheme == 'light' ? '🌞' : '🌙';
         }
 
     </script>
