@@ -229,13 +229,13 @@ body {
 }
 
 .card-tier.A {
-	border: 2px solid #473a53;
-	box-shadow: 0 0 10px #473a53;
+	border: 2px solid #8400ff;
+	box-shadow: 0 0 10px #8400ff;
 }
 
 .card-tier.B {
-	border: 2px solid #4a6371;
-	box-shadow: 0 0 8px #4a6371;
+	border: 2px solid #0098f0;
+	box-shadow: 0 0 8px #0098f0;
 }
 
 .mist-overlay {
